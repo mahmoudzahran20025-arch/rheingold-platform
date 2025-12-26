@@ -46,16 +46,7 @@ export default function Navbar() {
             <nav className="bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-sm">
                 <div className="container mx-auto px-4">
                     <div className="flex h-20 items-center justify-between">
-                        {/* Logo - Cleaned up without + symbol */}
-                        <Link href="/" className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                                <span className="text-white font-bold text-xl">R</span>
-                            </div>
-                            <div className="hidden sm:block">
-                                <h1 className="text-xl font-bold text-gray-900">Rheingold</h1>
-                                <p className="text-xs text-blue-600 font-medium -mt-1">Royal Medica GmbH</p>
-                            </div>
-                        </Link>
+
 
                         {/* Desktop Navigation */}
                         <div className="hidden lg:flex items-center gap-1">

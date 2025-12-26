@@ -1,0 +1,11 @@
+name = "rheingold-medica-api"
+main = "src/index.ts"
+compatibility_date = "2023-10-30"
+
+[vars]
+CORS_ORIGIN = "http://localhost:3000"
+
+[[kv_namespaces]]
+binding = "CONTACT_MESSAGES"
+id = "xxx-todo-create-kv-namespace"
+preview_id = "xxx-todo-create-kv-namespace-preview"

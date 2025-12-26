@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, ExternalLink, Leaf } from 'lucide-react'
+import Logo from '@/components/ui/logo'
 
 const footerLinks = {
     company: [
@@ -53,14 +54,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
                     {/* Company Info */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                                <span className="text-white font-bold text-xl">R</span>
-                            </div>
-                            <div>
-                                <h2 className="text-xl font-bold">Rheingold</h2>
-                                <p className="text-xs text-blue-400 font-medium -mt-1">Royal Medica GmbH</p>
-                            </div>
+                        <Link href="/" className="inline-block mb-6 group">
+                            <Logo variant="light" />
                         </Link>
                         <div className="flex items-center gap-2 mb-4 px-3 py-2 rounded-lg bg-emerald-900/30 border border-emerald-800/50 w-fit">
                             <Leaf className="w-4 h-4 text-emerald-400" />

@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Users, Target, Award, Globe, Building, TrendingUp } from 'lucide-react'
+import { Users, Target, Award, Globe, Building, Leaf, ExternalLink } from 'lucide-react'
 import TrustBadges from '@/components/shared/TrustBadges'
 import CTASection from '@/components/sections/CTASection'
 
@@ -12,7 +11,7 @@ const timeline = [
     { year: '2015', title: 'EDA Partnership', description: 'Official partnership with Egyptian Drug Authority' },
     { year: '2018', title: 'GMP Certification', description: 'Achieved EU GMP compliance certification' },
     { year: '2021', title: 'Expansion', description: 'Expanded to 30+ countries worldwide' },
-    { year: '2024', title: 'Innovation', description: 'Launched digital platform for partners' },
+    { year: '2024', title: 'Nutraceuticals Focus', description: 'Launched premium nutraceuticals division' },
 ]
 
 const values = [
@@ -40,9 +39,9 @@ const values = [
 
 const stats = [
     { value: '15+', label: 'Years Experience' },
-    { value: '1000+', label: 'Products' },
+    { value: '500+', label: 'Nutraceuticals' },
     { value: '50+', label: 'Countries' },
-    { value: '500+', label: 'Partners' },
+    { value: '150+', label: 'Partners' },
 ]
 
 export default function AboutPage() {
@@ -51,20 +50,22 @@ export default function AboutPage() {
             {/* Hero */}
             <section className="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-24 relative overflow-hidden">
                 <div
-                    className="absolute inset-0 opacity-10"
+                    className="absolute inset-0 opacity-5"
                     style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                        backgroundImage: `radial-gradient(circle at 2px 2px, white 2px, transparent 0)`,
+                        backgroundSize: '32px 32px',
                     }}
                 />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.span
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-amber-400 font-semibold text-sm mb-6"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-400 font-semibold text-sm mb-6"
                         >
+                            <Leaf className="w-4 h-4" />
                             About Us
                         </motion.span>
                         <motion.h1
@@ -73,10 +74,11 @@ export default function AboutPage() {
                             transition={{ delay: 0.1 }}
                             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
                         >
-                            Excellence in Pharmaceutical{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-300">
-                                Distribution
-                            </span>
+                            Premium{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
+                                Nutraceuticals
+                            </span>{' '}
+                            from Europe
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -84,7 +86,7 @@ export default function AboutPage() {
                             transition={{ delay: 0.2 }}
                             className="text-xl text-blue-100"
                         >
-                            For over 15 years, Rheingold Royal Medica has been bridging European pharmaceutical excellence with MENA healthcare needs.
+                            For over 15 years, Rheingold Royal Medica has been your trusted German partner for quality nutraceuticals and pharmaceutical products.
                         </motion.p>
                     </div>
                 </div>
@@ -103,7 +105,7 @@ export default function AboutPage() {
                                 transition={{ delay: index * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
+                                <div className="text-4xl md:text-5xl font-bold text-emerald-600 mb-2">
                                     {stat.value}
                                 </div>
                                 <div className="text-gray-600 font-medium">{stat.label}</div>
@@ -122,17 +124,17 @@ export default function AboutPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-4">
+                            <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-600 font-semibold text-sm mb-4">
                                 Our Mission
                             </span>
                             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                                Delivering Quality Healthcare Solutions Worldwide
+                                Delivering Quality Nutraceuticals Worldwide
                             </h2>
                             <p className="text-lg text-gray-600 mb-6">
-                                At Rheingold Royal Medica, our mission is to ensure that high-quality, certified pharmaceutical products are accessible to healthcare providers and patients across the MENA region and beyond.
+                                At Rheingold Royal Medica, our mission is to ensure that high-quality, certified nutraceutical and pharmaceutical products are accessible to healthcare providers and patients across the MENA region and beyond.
                             </p>
                             <p className="text-gray-600 mb-8">
-                                We combine German precision and quality standards with deep market expertise to deliver pharmaceutical solutions that meet the highest international standards, including EDA, GMP, and EMA compliance.
+                                We combine German precision and quality standards with deep market expertise to deliver healthcare solutions that meet the highest international standards, including EDA, GMP, and EMA compliance.
                             </p>
                             <TrustBadges variant="default" />
                         </motion.div>
@@ -143,13 +145,22 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="relative"
                         >
-                            <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-3xl p-8 aspect-square flex items-center justify-center">
+                            <div className="bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-3xl p-8 aspect-square flex items-center justify-center">
                                 <div className="text-center">
                                     <div className="w-32 h-32 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center shadow-2xl">
                                         <Building className="w-16 h-16 text-white" />
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Bad Homburg, Germany</h3>
-                                    <p className="text-gray-600">Our European Headquarters</p>
+                                    <p className="text-gray-600 mb-4">Our European Headquarters</p>
+                                    <div className="flex flex-wrap justify-center gap-2">
+                                        <a href="https://www.northdata.com/Rheingold+Royal+Medica+GmbH" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline">
+                                            NorthData <ExternalLink className="w-3 h-3" />
+                                        </a>
+                                        <span className="text-gray-300">•</span>
+                                        <a href="https://www.dnb.com/business-directory/company-profiles.rheingold_royal_medica_gmbh" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline">
+                                            D&B <ExternalLink className="w-3 h-3" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -182,7 +193,7 @@ export default function AboutPage() {
                                 transition={{ delay: index * 0.1 }}
                                 className="bg-white rounded-2xl p-8 shadow-lg text-center"
                             >
-                                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
                                     <value.icon className="w-8 h-8 text-white" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
