@@ -50,16 +50,16 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 </div>
             </div>
 
-            <div className="container mx-auto px-6 py-12 max-w-7xl">
+            <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-7xl">
                 {/* Main Product Layout */}
-                <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
 
                     {/* LEFT COLUMN: Image Gallery */}
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
                         <div className="relative aspect-square bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 mb-4 mix-blend-multiply">
                             <div className="absolute inset-0 flex items-center justify-center bg-white">
                                 {product.image ? (
-                                    <Image src={images[activeImage]} alt={product.name} fill className="object-contain p-12" />
+                                    <Image src={images[activeImage]} alt={product.name} fill className="object-contain p-6 md:p-12" />
                                 ) : (
                                     <div className="w-48 h-48 rounded-full bg-slate-100 flex items-center justify-center text-slate-300">
                                         <span className="text-6xl font-bold">{product.name.charAt(0)}</span>
@@ -68,14 +68,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                             </div>
 
                             {/* Corner Badges */}
-                            <div className="absolute top-6 left-6 flex flex-col gap-2">
+                            <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col gap-2">
                                 {isRx && (
-                                    <Badge className="bg-slate-900 text-white border-none shadow-md px-3 py-1">
+                                    <Badge className="bg-slate-900 text-white border-none shadow-md px-2 py-1 md:px-3 text-xs">
                                         <Lock className="w-3 h-3 mr-1" /> Professional Use Only
                                     </Badge>
                                 )}
                                 {product.gmpCertified && (
-                                    <Badge variant="outline" className="bg-white/90 backdrop-blur shadow-sm text-slate-700">
+                                    <Badge variant="outline" className="bg-white/90 backdrop-blur shadow-sm text-slate-700 text-xs">
                                         <Award className="w-3 h-3 mr-1 text-amber-600" /> GMP Sourced
                                     </Badge>
                                 )}
@@ -84,11 +84,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                     </motion.div>
 
                     {/* RIGHT COLUMN: Product Info */}
-                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
+                    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6 md:space-y-8">
 
                         {/* Header Info */}
                         <div>
-                            <div className="flex items-center gap-2 mb-4">
+                            <div className="flex flex-wrap items-center gap-2 mb-3 md:mb-4">
                                 <Badge variant="secondary" className="bg-amber-50 text-amber-800 hover:bg-amber-100 border-amber-100">
                                     {product.category}
                                 </Badge>
@@ -99,7 +99,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                                 )}
                             </div>
 
-                            <h1 className="text-4xl font-serif font-bold text-slate-900 mb-2 tracking-tight">{product.name}</h1>
+                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-slate-900 mb-2 tracking-tight">{product.name}</h1>
 
                         </div>
 
