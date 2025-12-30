@@ -70,7 +70,7 @@ export const products: ProductData[] = [
 **Regulatory Status:**
 - Sourced from EU GMP Certified partner.
 - Distributed in compliance with local regulations.`,
-        manufacturer: 'Adwia Pharmaceuticals',
+        manufacturer: 'kwalitypharma',
         origin: 'Germany (EU GMP Certified Facility)',
         edaLicense: 'Regulated Product',
         gmpCertified: true,

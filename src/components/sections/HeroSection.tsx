@@ -110,12 +110,12 @@ export default function HeroSection() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative mt-12 lg:mt-0"
                     >
-                        <div className="relative transform scale-90 md:scale-100 origin-center">
+                        <div className="relative transform scale-100 origin-center">
                             {/* Floating Card 1 */}
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity }}
-                                className="absolute -top-6 -left-2 md:-top-8 md:-left-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700"
+                                className="relative lg:absolute -top-6 -left-2 md:-top-8 md:-left-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700 mb-4 lg:mb-0 max-w-xs mx-auto lg:mx-0"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
@@ -128,25 +128,8 @@ export default function HeroSection() {
                                 </div>
                             </motion.div>
 
-                            {/* Floating Card 2 */}
-                            <motion.div
-                                animate={{ y: [0, 10, 0] }}
-                                transition={{ duration: 5, repeat: Infinity }}
-                                className="absolute -bottom-6 -right-2 md:-bottom-8 md:-right-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                                        <Truck className="w-5 h-5 text-blue-400" />
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-slate-100">Global Logistics</p>
-                                        <p className="text-xs text-slate-400">Efficient Supply Chain</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-
                             {/* Main Visual Card */}
-                            <div className="relative bg-gradient-to-br from-slate-100 to-white rounded-2xl p-8 shadow-2xl border border-slate-200">
+                            <div className="relative bg-gradient-to-br from-slate-100 to-white rounded-2xl p-8 shadow-2xl border border-slate-200 mx-auto max-w-sm lg:max-w-none">
                                 <div className="text-center mb-8">
                                     <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-slate-900 flex items-center justify-center shadow-lg border-4 border-amber-500">
                                         <span className="text-3xl font-serif font-bold text-amber-500">R</span>
@@ -167,6 +150,23 @@ export default function HeroSection() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Floating Card 2 */}
+                            <motion.div
+                                animate={{ y: [0, 10, 0] }}
+                                transition={{ duration: 5, repeat: Infinity }}
+                                className="relative lg:absolute -bottom-6 -right-2 md:-bottom-8 md:-right-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700 mt-4 lg:mt-0 max-w-xs mx-auto lg:mx-0 ml-auto"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                        <Truck className="w-5 h-5 text-blue-400" />
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-slate-100">Global Logistics</p>
+                                        <p className="text-xs text-slate-400">Efficient Supply Chain</p>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

@@ -19,6 +19,8 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
     const [searchQuery, setSearchQuery] = useState('')
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
+
     // Filter Logic
     const filteredProducts = initialProducts.filter((product) => {
         const matchesCategory = activeCategory === 'all' || product.categorySlug === activeCategory
@@ -29,62 +31,104 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
         return matchesCategory && matchesSearch
     })
 
+    const CategoriesList = () => (
+        <div className="space-y-2">
+            {/* All Products Option */}
+            <button
+                onClick={() => { setActiveCategory('all'); setIsFilterOpen(false); }}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${activeCategory === 'all'
+                    ? 'bg-blue-50 text-blue-600 font-semibold'
+                    : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+            >
+                <span>All Products</span>
+                <Badge variant="outline" className="text-xs">
+                    {initialProducts.length}
+                </Badge>
+            </button>
+
+            {/* Dynamic Categories from Data Source */}
+            {productCategories.map((category) => (
+                <button
+                    key={category.id}
+                    onClick={() => { setActiveCategory(category.id); setIsFilterOpen(false); }}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${activeCategory === category.id
+                        ? 'bg-blue-50 text-blue-600 font-semibold'
+                        : 'text-gray-600 hover:bg-gray-50'
+                        }`}
+                >
+                    <span className="text-left text-sm">{category.name}</span>
+                    <Badge variant="outline" className="text-xs ml-2">
+                        {initialProducts.filter(p => p.categorySlug === category.id).length}
+                    </Badge>
+                </button>
+            ))}
+        </div>
+    )
+
     return (
         <div className="page-content min-h-screen bg-gray-50">
             {/* Hero Banner: B2B Distribution Focus */}
-            <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-16">
+            <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-12 md:py-16">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-center text-white"
                     >
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4">Distribution Portfolio</h1>
-                        <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Distribution Portfolio</h1>
+                        <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
                             Authorized supply of pharmaceuticals and nutraceuticals for healthcare partners.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            <div className="container mx-auto px-4 py-12">
+            <div className="container mx-auto px-4 py-8 md:py-12">
+                {/* Mobile Filter Toggle */}
+                <div className="lg:hidden mb-6">
+                    <Button
+                        onClick={() => setIsFilterOpen(true)}
+                        className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 shadow-sm"
+                    >
+                        <List className="w-4 h-4" />
+                        <span>Filter Categories</span>
+                        <Badge variant="secondary" className="ml-1 text-xs">
+                            {activeCategory === 'all' ? 'All' : productCategories.find(c => c.id === activeCategory)?.name}
+                        </Badge>
+                    </Button>
+                </div>
+
+                {/* Mobile Filter Drawer (Overlay) */}
+                {isFilterOpen && (
+                    <div className="fixed inset-0 z-50 lg:hidden">
+                        {/* Backdrop */}
+                        <div
+                            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                            onClick={() => setIsFilterOpen(false)}
+                        />
+                        {/* Drawer Content */}
+                        <motion.div
+                            initial={{ y: '100%' }}
+                            animate={{ y: 0 }}
+                            exit={{ y: '100%' }}
+                            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-6 shadow-xl max-h-[85vh] overflow-y-auto"
+                        >
+                            <div className="flex items-center justify-between mb-6">
+                                <h3 className="font-bold text-lg text-gray-900">Select Category</h3>
+                                <Button variant="ghost" size="sm" onClick={() => setIsFilterOpen(false)}>Close</Button>
+                            </div>
+                            <CategoriesList />
+                        </motion.div>
+                    </div>
+                )}
+
                 <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Sidebar Filters */}
-                    <aside className="lg:w-72 space-y-8">
+                    {/* Sidebar Filters (Desktop) */}
+                    <aside className="hidden lg:block lg:w-72 space-y-8">
                         <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-32">
                             <h3 className="font-bold text-gray-900 mb-4">Supply Categories</h3>
-                            <div className="space-y-2">
-                                {/* All Products Option */}
-                                <button
-                                    onClick={() => setActiveCategory('all')}
-                                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${activeCategory === 'all'
-                                        ? 'bg-blue-50 text-blue-600 font-semibold'
-                                        : 'text-gray-600 hover:bg-gray-50'
-                                        }`}
-                                >
-                                    <span>All Products</span>
-                                    <Badge variant="outline" className="text-xs">
-                                        {initialProducts.length}
-                                    </Badge>
-                                </button>
-
-                                {/* Dynamic Categories from Data Source */}
-                                {productCategories.map((category) => (
-                                    <button
-                                        key={category.id}
-                                        onClick={() => setActiveCategory(category.id)}
-                                        className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${activeCategory === category.id
-                                            ? 'bg-blue-50 text-blue-600 font-semibold'
-                                            : 'text-gray-600 hover:bg-gray-50'
-                                            }`}
-                                    >
-                                        <span className="text-left text-sm">{category.name}</span>
-                                        <Badge variant="outline" className="text-xs ml-2">
-                                            {initialProducts.filter(p => p.categorySlug === category.id).length}
-                                        </Badge>
-                                    </button>
-                                ))}
-                            </div>
+                            <CategoriesList />
 
                             {/* Certifications Filter (Visual Only for now) */}
                             <div className="mt-8 pt-6 border-t border-gray-100">
