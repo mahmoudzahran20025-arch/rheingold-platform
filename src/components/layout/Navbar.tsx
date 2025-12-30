@@ -27,9 +27,9 @@ export default function Navbar() {
                     {/* Desktop View */}
                     <div className="hidden md:flex items-center justify-between">
                         <div className="flex items-center gap-6">
-                            <a href="tel:+4961009999" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
+                            <a href="tel:+49163344008" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
                                 <Phone className="w-4 h-4" />
-                                <span>+49 (0) 6100 9999</span>
+                                <span>+49 163 344 008</span>
                             </a>
                             <a href="mailto:info@rheingold-medica.com" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
                                 <Mail className="w-4 h-4" />

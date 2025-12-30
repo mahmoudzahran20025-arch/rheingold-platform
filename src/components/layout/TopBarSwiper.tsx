@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, CheckCircle } from 'lucide-react'
 
 const items = [
-    { icon: Phone, text: '+49 (0) 6100 9999', href: 'tel:+4961009999' },
+    { icon: Phone, text: '+49 163 344 008', href: 'tel:+49163344008' },
     { icon: Mail, text: 'info@rheingold-medica.com', href: 'mailto:info@rheingold-medica.com' },
     { icon: MapPin, text: 'Bad Homburg, Germany', href: '#' },
     { icon: CheckCircle, text: 'Verified B2B Partner', href: '#' }

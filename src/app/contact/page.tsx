@@ -13,8 +13,8 @@ const contactInfo = [
     {
         icon: Phone,
         title: 'Phone',
-        details: '+49 (0) 6100 9999',
-        link: 'tel:+4961009999',
+        details: '+49 163 344 008',
+        link: 'tel:+49163344008',
         color: 'from-blue-500 to-blue-600',
     },
     {

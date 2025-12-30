@@ -65,9 +65,9 @@ export default function Footer() {
                             Your trusted German partner for quality nutraceuticals and pharmaceutical imports. EDA & GMP certified products from European manufacturers.
                         </p>
                         <div className="space-y-3">
-                            <a href="tel:+4961009999" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
-                                <Phone className="w-5 h-5 text-blue-400" />
-                                <span>+49 (0) 6100 9999</span>
+                            <a href="tel:+49163344008" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                                <Phone className="w-5 h-5 text-blue-500 group-hover:text-blue-400" />
+                                <span>+49 163 344 008</span>
                             </a>
                             <a href="mailto:info@rheingold-medica.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                                 <Mail className="w-5 h-5 text-blue-400" />
