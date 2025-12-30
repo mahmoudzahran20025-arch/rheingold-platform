@@ -15,7 +15,7 @@ export function formatPrice(price: number | string, currency: 'EUR' | 'USD' | 'E
 
 export function generateWhatsAppLink(phone: string, message: string = '') {
     // Remove non-numeric characters from phone number
-    const cleanPhone = phone.replace(/\D/g, '')
+    const cleanPhone = phone.replace(/\D/g, '').replace(/^0+/, '') // Remove non-numeric and leading zeros
     // Default to a common format if empty, but assuming input is valid
     const link = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
     return link

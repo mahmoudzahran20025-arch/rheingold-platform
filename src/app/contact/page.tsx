@@ -13,8 +13,8 @@ const contactInfo = [
     {
         icon: Phone,
         title: 'Phone',
-        details: '+49 163 344 008',
-        link: 'tel:+49163344008',
+        details: '+49 163 334 4008',
+        link: 'tel:+491633344008',
         color: 'from-blue-500 to-blue-600',
     },
     {

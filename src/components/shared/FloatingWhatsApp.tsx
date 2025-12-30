@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send } from 'lucide-react'
 import { generateWhatsAppLink } from '@/lib/utils'
 
-const WHATSAPP_NUMBER = '49163344008'
+const WHATSAPP_NUMBER = '491633344008'
 
 export default function FloatingWhatsApp() {
     const [isOpen, setIsOpen] = useState(false)

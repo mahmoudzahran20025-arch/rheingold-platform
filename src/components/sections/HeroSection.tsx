@@ -108,14 +108,14 @@ export default function HeroSection() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="hidden lg:block relative"
+                        className="relative mt-12 lg:mt-0"
                     >
-                        <div className="relative">
+                        <div className="relative transform scale-90 md:scale-100 origin-center">
                             {/* Floating Card 1 */}
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity }}
-                                className="absolute -top-8 -left-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-4 shadow-2xl border border-slate-700"
+                                className="absolute -top-6 -left-2 md:-top-8 md:-left-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
@@ -132,7 +132,7 @@ export default function HeroSection() {
                             <motion.div
                                 animate={{ y: [0, 10, 0] }}
                                 transition={{ duration: 5, repeat: Infinity }}
-                                className="absolute -bottom-8 -right-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-4 shadow-2xl border border-slate-700"
+                                className="absolute -bottom-6 -right-2 md:-bottom-8 md:-right-8 z-20 bg-slate-800/90 backdrop-blur rounded-xl p-3 md:p-4 shadow-2xl border border-slate-700"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">

@@ -40,7 +40,7 @@ export default function ImprintPage() {
                             </div>
                             <div className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-gray-400" />
-                                <p className="text-gray-900">+49 (0) 6100 9999</p>
+                                <p className="text-gray-900">Phone: +49 163 334 4008</p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-gray-400" />

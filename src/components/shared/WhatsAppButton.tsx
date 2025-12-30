@@ -15,7 +15,7 @@ interface WhatsAppButtonProps {
 }
 
 export default function WhatsAppButton({
-    phoneNumber = '4915166014524', // Updated to correct number if needed, or keep dynamic
+    phoneNumber = '491633344008', // Updated to correct global number
     message,
     productName,
     className,
