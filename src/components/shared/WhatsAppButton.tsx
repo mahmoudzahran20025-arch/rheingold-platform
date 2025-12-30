@@ -11,19 +11,21 @@ interface WhatsAppButtonProps {
     className?: string
     size?: 'default' | 'sm' | 'lg' | 'xl'
     showText?: boolean
+    label?: string
 }
 
 export default function WhatsAppButton({
-    phoneNumber = '4961009999',
+    phoneNumber = '4915166014524', // Updated to correct number if needed, or keep dynamic
     message,
     productName,
     className,
     size = 'default',
     showText = true,
+    label
 }: WhatsAppButtonProps) {
     const defaultMessage = productName
         ? `Hello Rheingold Royal Medica,\n\nI am interested in your product: ${productName}\n\nPlease provide me with more information about:\n- Pricing and availability\n- Minimum order quantity\n- Delivery options\n\nThank you.`
-        : `Hello Rheingold Royal Medica,\n\nI am interested in your pharmaceutical products.\n\nPlease contact me at your earliest convenience.\n\nThank you.`
+        : `Hello Rheingold Royal Medica,\n\nI am interested in your pharmaceutical B2B portfolio.\n\nPlease contact me regarding distribution opportunities.\n\nThank you.`
 
     const finalMessage = message || defaultMessage
 
@@ -39,8 +41,8 @@ export default function WhatsAppButton({
             onClick={handleClick}
             className={className}
         >
-            <MessageCircle className="w-5 h-5" />
-            {showText && <span>Contact via WhatsApp</span>}
+            <MessageCircle className="w-5 h-5 mr-2" />
+            {showText && <span>{label || 'Contact via WhatsApp'}</span>}
         </Button>
     )
 }

@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const blogPosts = [
         'gmp-compliance-egypt',
         'german-pharmaceuticals-egypt-guide',
-        'safe-purchasing-guide-pharmacies',
+        'safe-sourcing-guide-pharmacies',
         'eda-updates-2025',
         'nutraceuticals-mena-market-growth',
         'quality-assurance-supply-chain',

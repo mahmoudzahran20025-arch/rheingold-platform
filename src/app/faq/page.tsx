@@ -18,7 +18,7 @@ const faqs = [
             },
             {
                 q: 'Do you ship to all of Egypt?',
-                a: 'Yes, we deliver to all governorates in Egypt including Cairo, Alexandria, Giza, and other major cities.',
+                a: 'Yes, our verified distribution network covers all governorates in Egypt including Cairo, Alexandria, Giza, and major cities.',
             },
             {
                 q: 'What are the shipping costs?',

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { products, getProductBySlug, getRelatedProducts } from '@/data/products'
+import { products as staticProducts, getProductBySlug as getStaticProduct, getRelatedProducts } from '@/data/products'
+import { getProductBySlug as getApiProduct } from '@/lib/api'
 import ProductDetailClient from './ProductDetailClient'
 
 interface Props {
@@ -8,14 +9,18 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return products.map((product) => ({
+    return staticProducts.map((product) => ({
         slug: product.slug,
     }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params
-    const product = getProductBySlug(slug)
+    // Try API first
+    let product = await getApiProduct(slug) as any
+    if (!product) {
+        product = getStaticProduct(slug)
+    }
 
     if (!product) {
         return {
@@ -51,13 +56,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
     const { slug } = await params
-    const product = getProductBySlug(slug)
+
+    // Try API first, then Static
+    let product = await getApiProduct(slug)
+
+    if (!product) {
+        // Fallback to static
+        const staticProd = getStaticProduct(slug)
+        if (staticProd) {
+            // Cast static product to match anticipated API shape logic if needed, 
+            // but here we just assign it. 
+            // We use 'any' or explicit intersection to handle the unified type locally if strictly needed.
+            product = staticProd as any
+        }
+    }
 
     if (!product) {
         notFound()
     }
 
+    // Cast to 'any' to bypass strict type mismatch between lib/api Product and data/products ProductData 
+    // for the purpose of passing to the client component which expects ProductData of a specific shape.
+    const productData = product as any
+
     const relatedProducts = getRelatedProducts(slug, 4)
+
 
     return (
         <>
@@ -104,7 +127,7 @@ export default async function ProductPage({ params }: Props) {
                 }}
             />
 
-            <ProductDetailClient product={product} relatedProducts={relatedProducts} />
+            <ProductDetailClient product={product as any} relatedProducts={relatedProducts} />
         </>
     )
 }

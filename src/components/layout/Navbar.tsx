@@ -61,8 +61,12 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        {/* CTA Button */}
                         <div className="hidden lg:flex items-center gap-4">
+                            <Link href="/login">
+                                <Button variant="ghost" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50">
+                                    Partner Login
+                                </Button>
+                            </Link>
                             <Link href="/contact">
                                 <Button variant="default" size="lg">
                                     Get in Touch

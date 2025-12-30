@@ -9,19 +9,19 @@ import { Card, CardContent } from '@/components/ui/card'
 
 export const metadata: Metadata = {
     title: 'Partner Portal - For Pharmacies & Distributors',
-    description: 'Join Rheingold Royal Medica partner network. Exclusive wholesale prices, fast shipping from Germany, and 24/7 support for pharmacies in Egypt and MENA.',
+    description: 'Join Rheingold Royal Medica partner network. Exclusive wholesale prices, fast shipping from Germany, and 24/7 support for registered partners worldwide.',
 }
 
 const benefits = [
     {
         icon: Award,
-        title: 'European Wholesale Prices',
-        description: '30-40% savings on premium nutraceuticals and pharmaceuticals',
+        title: 'Competitive Wholesale Pricing',
+        description: 'Direct-from-manufacturer pricing structure for authorized distributors',
     },
     {
         icon: Truck,
         title: 'Fast Shipping',
-        description: '7-14 business days delivery from Germany to Egypt',
+        description: '7-14 business days delivery from Germany to your certified facility',
     },
     {
         icon: Phone,
@@ -64,7 +64,7 @@ export default function PartnersPage() {
                             </span>
                         </h1>
                         <p className="text-xl text-blue-100 mb-8">
-                            Join 150+ pharmacies in Cairo & Alexandria. Access premium European nutraceuticals at wholesale prices with full regulatory compliance.
+                            Join our growing international network of partners. Access premium European nutraceuticals at wholesale prices with full regulatory compliance.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <Link href="/contact">
@@ -88,7 +88,7 @@ export default function PartnersPage() {
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">Exclusive Partner Benefits</h2>
                     <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-                        Rheingold Royal Medica offers unmatched advantages for healthcare partners in Egypt and MENA region.
+                        Rheingold Royal Medica offers unmatched advantages for healthcare partners and distributors worldwide.
                     </p>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {benefits.map((benefit, index) => (

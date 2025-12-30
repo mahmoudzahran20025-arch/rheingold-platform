@@ -94,18 +94,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Products</h3>
-                        <ul className="space-y-3">
-                            {footerLinks.products.map((link) => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+
 
                     <div>
                         <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Resources</h3>

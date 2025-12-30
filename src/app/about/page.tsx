@@ -130,9 +130,7 @@ export default function AboutPage() {
                             <h2 className="text-4xl font-bold text-gray-900 mb-6">
                                 Delivering Quality Nutraceuticals Worldwide
                             </h2>
-                            <p className="text-lg text-gray-600 mb-6">
-                                At Rheingold Royal Medica, our mission is to ensure that high-quality, certified nutraceutical and pharmaceutical products are accessible to healthcare providers and patients across the MENA region and beyond.
-                            </p>
+                            At Rheingold Royal Medica, our mission is to ensure that high-quality, certified nutraceutical and pharmaceutical products are accessible to healthcare partners for professional distribution across the MENA region.
                             <p className="text-gray-600 mb-8">
                                 We combine German precision and quality standards with deep market expertise to deliver healthcare solutions that meet the highest international standards, including EDA, GMP, and EMA compliance.
                             </p>

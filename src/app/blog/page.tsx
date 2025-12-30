@@ -29,9 +29,9 @@ const posts = [
         category: 'Import Guide',
     },
     {
-        title: 'Safe Purchasing Guide for Pharmacies',
-        slug: 'safe-purchasing-guide-pharmacies',
-        excerpt: 'Best practices for pharmacies when purchasing nutraceuticals and pharmaceuticals from international suppliers.',
+        title: 'Safe Sourcing Guide for Pharmacies',
+        slug: 'safe-sourcing-guide-pharmacies',
+        excerpt: 'Best practices for pharmacies when sourcing nutraceuticals and pharmaceuticals from international suppliers.',
         date: 'December 15, 2025',
         readTime: '6 min read',
         category: 'Best Practices',

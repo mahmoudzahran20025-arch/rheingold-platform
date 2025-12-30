@@ -1,29 +1,36 @@
+
 // Product types and data for the platform
+// STRICT B2B COMPLIANCE MODE
+// NO DIRECT CONSUMER SALES
+// NO DISEASE CLAIMS (TREATS/CURES)
+
 export interface ProductData {
     id: string
     slug: string
     name: string
-    nameAr?: string
+    // nameAr removed for international consistency
     nameDe?: string
+    // Allowed Categories Only:
+    // 'Prescription Pharmaceuticals' | 'Food Supplements & Nutraceuticals' | 'OTC & Wellness Products' | 'Medical & Healthcare Supplies'
     category: string
-    categorySlug: string
+    categorySlug: 'pharmaceuticals' | 'nutraceuticals' | 'otc' | 'medical-supplies'
     activeIngredient: string
     description: string
     fullDescription?: string
     manufacturer: string
     origin: string
-    edaLicense?: string
+    edaLicense?: string // Internal use only, mostly hidden or "Available upon request"
     gmpCertified: boolean
     packingStyle: string
     dosageForm: string
     strength?: string
-    price: number
+    price?: number // Optional, Hidden for Rx
     currency: string
-    availability: 'in_stock' | 'out_of_stock' | 'pre_order'
+    availability: 'in_stock' | 'out_of_stock' | 'pre_order' // Internal status, not always shown
     image: string
     gallery?: string[]
     certifications: string[]
-    indications?: string[]
+    indications?: string[] // "Recommended use" or "Indications" (Rx only)
     contraindications?: string[]
     sideEffects?: string[]
     storageConditions?: string
@@ -32,15 +39,17 @@ export interface ProductData {
     featured?: boolean
     createdAt?: string
     updatedAt?: string
+    // B2B specific
+    productType: 'Rx' | 'Supplement' | 'OTC' | 'MedicalDevice'
+    distributionModel: string
+    filesAvailable: string[] // e.g. ['COA', 'GMP Certificate']
 }
 
 export const productCategories = [
-    { id: 'nutraceuticals', name: 'Nutraceuticals', nameAr: 'المكملات الغذائية', icon: '💊' },
-    { id: 'pharmaceuticals', name: 'Pharmaceuticals', nameAr: 'الأدوية', icon: '💉' },
-    { id: 'neurology', name: 'Neurology & Energy', nameAr: 'الأعصاب والطاقة', icon: '🧠' },
-    { id: 'cardiology', name: 'Cardiology', nameAr: 'القلب والأوعية', icon: '❤️' },
-    { id: 'vitamins', name: 'Vitamins & Supplements', nameAr: 'الفيتامينات', icon: '🌿' },
-    { id: 'hospital-supplies', name: 'Hospital Supplies', nameAr: 'مستلزمات طبية', icon: '🏥' },
+    { id: 'pharmaceuticals', name: 'Prescription Pharmaceuticals', icon: '💊' },
+    { id: 'nutraceuticals', name: 'Food Supplements & Nutraceuticals', icon: '🌿' },
+    { id: 'otc', name: 'OTC & Wellness Products', icon: '❤️' },
+    { id: 'medical-supplies', name: 'Medical & Healthcare Supplies', icon: '🏥' },
 ]
 
 export const products: ProductData[] = [
@@ -48,28 +57,27 @@ export const products: ProductData[] = [
         id: 'klv-001',
         slug: 'king-lovee-vital',
         name: 'King Lovee Vital',
-        nameAr: 'كينج لافي فيتال',
-        category: 'Neurology & Energy',
-        categorySlug: 'neurology',
+        category: 'Prescription Pharmaceuticals',
+        categorySlug: 'pharmaceuticals',
         activeIngredient: 'Tadalafil 5mg + Multivitamin Complex',
-        description: 'Premium neurological support combining PDE-5 inhibition with essential vitamins for enhanced vitality.',
-        fullDescription: `King Lovee Vital is a premium pharmaceutical formula designed to support neurological health and daily energy levels. This unique combination brings together the vascular benefits of Tadalafil with a comprehensive B-vitamin complex for optimal performance.
+        description: 'Pharmaceutical grade product combining PDE-5 inhibition with essential vitamins.',
+        fullDescription: `Product intended for professional partner distribution. King Lovee Vital combines Tadalafil with a B-vitamin complex.
 
-**Key Benefits:**
-- Supports healthy blood circulation
-- Enhances energy metabolism
-- Promotes nervous system function
-- Carefully formulated for daily use
+**Formula Composition:**
+- Tadalafil: 5mg
+- Vitamin B Complex
 
-Manufactured under strict EU GMP standards by Adwia Pharmaceuticals, this product represents our commitment to bringing quality European pharmaceuticals to the MENA region.`,
+**Regulatory Status:**
+- Sourced from EU GMP Certified partner.
+- Distributed in compliance with local regulations.`,
         manufacturer: 'Adwia Pharmaceuticals',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-12345',
+        origin: 'Germany (EU GMP Certified Facility)',
+        edaLicense: 'Regulated Product',
         gmpCertified: true,
         packingStyle: 'Blister Pack - 30 Film-Coated Tablets',
         dosageForm: 'Film-Coated Tablets',
         strength: '5mg Tadalafil per tablet',
-        price: 24.99,
+        price: 0,
         currency: 'EUR',
         availability: 'in_stock',
         image: '/images/products/king-lovee-vital.png',
@@ -78,161 +86,166 @@ Manufactured under strict EU GMP standards by Adwia Pharmaceuticals, this produc
             '/images/products/klv-pack-back.png',
             '/images/products/klv-blister.png',
         ],
-        certifications: ['EDA', 'GMP', 'ISO-9001'],
+        certifications: ['GMP', 'ISO-9001'],
         indications: [
-            'Support for vascular health',
-            'Energy and vitality enhancement',
-            'Neurological function support',
+            'Prescription use only',
+            'Refer to professional datasheet',
         ],
         contraindications: [
-            'Hypersensitivity to tadalafil or any component',
-            'Concurrent use of nitrate medications',
-            'Severe cardiovascular disease',
-            'Age under 18 years',
+            'Refer to SmPC',
         ],
         sideEffects: [
-            'Headache (common)',
-            'Flushing (common)',
-            'Dyspepsia (uncommon)',
-            'Nasal congestion (uncommon)',
+            'Refer to SmPC',
         ],
-        storageConditions: 'Store at 15-25°C, protect from moisture and light',
-        shelfLife: '36 months',
-        relatedProducts: ['neuro-balance-pro', 'vitamin-b-complex-forte'],
-        featured: true,
-    },
-    {
-        id: 'cpf-002',
-        slug: 'cardio-plus-forte',
-        name: 'Cardio Plus Forte',
-        nameAr: 'كارديو بلس فورت',
-        category: 'Cardiology',
-        categorySlug: 'cardiology',
-        activeIngredient: 'Aspirin 100mg + Omega-3 1000mg',
-        description: 'Cardiovascular support formula combining antiplatelet therapy with essential fatty acids.',
-        fullDescription: `Cardio Plus Forte is a comprehensive cardiovascular support formulation designed for heart health maintenance. This unique combination provides dual-action protection through aspirin's antiplatelet effects and omega-3's lipid-modulating properties.
-
-Developed for healthcare professionals seeking a convenient combination therapy option.`,
-        manufacturer: 'Pharco Pharmaceuticals',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-23456',
-        gmpCertified: true,
-        packingStyle: 'Blister Pack - 28 Soft Gel Capsules',
-        dosageForm: 'Soft Gel Capsules',
-        strength: 'Aspirin 100mg + Omega-3 1000mg',
-        price: 18.50,
-        currency: 'EUR',
-        availability: 'in_stock',
-        image: '/images/products/cardio-plus-forte.png',
-        certifications: ['EDA', 'GMP'],
-        indications: [
-            'Secondary prevention of cardiovascular events',
-            'Lipid profile support',
-            'Heart health maintenance',
-        ],
-        storageConditions: 'Store below 25°C',
-        shelfLife: '24 months',
-        featured: false,
-    },
-    {
-        id: 'nbp-003',
-        slug: 'neuro-balance-pro',
-        name: 'Neuro Balance Pro',
-        nameAr: 'نيورو بالانس برو',
-        category: 'Nutraceuticals',
-        categorySlug: 'nutraceuticals',
-        activeIngredient: 'Vitamin B Complex + Magnesium Citrate 400mg',
-        description: 'Advanced neurological support with complete B-vitamin spectrum and highly bioavailable magnesium.',
-        fullDescription: `Neuro Balance Pro represents the next generation of neurological support supplementation. Featuring a complete B-vitamin complex combined with magnesium citrate in its most bioavailable form.
-
-Ideal for healthcare providers seeking a comprehensive nervous system support option for their patients.`,
-        manufacturer: 'EIPICO',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-34567',
-        gmpCertified: true,
-        packingStyle: 'Bottle - 60 Coated Tablets',
-        dosageForm: 'Coated Tablets',
-        price: 32.00,
-        currency: 'EUR',
-        availability: 'in_stock',
-        image: '/images/products/neuro-balance-pro.png',
-        certifications: ['EDA', 'GMP', 'ISO-9001'],
-        indications: [
-            'Nervous system support',
-            'Energy metabolism',
-            'Reduction of tiredness and fatigue',
-            'Normal psychological function',
-        ],
-        storageConditions: 'Store at room temperature',
+        storageConditions: 'Store at 15-25°C',
         shelfLife: '36 months',
         featured: true,
+        productType: 'Rx',
+        distributionModel: 'Authorized Pharmacy Distribution',
+        filesAvailable: ['COA', 'GMP Certificate', 'Product SmPC']
     },
     {
-        id: 'isp-004',
-        slug: 'immuno-shield-plus',
-        name: 'Immuno Shield Plus',
-        nameAr: 'إميونو شيلد بلس',
-        category: 'Nutraceuticals',
-        categorySlug: 'nutraceuticals',
-        activeIngredient: 'Vitamin C 1000mg + Zinc 25mg + Elderberry Extract',
-        description: 'Triple-action immune support combining vitamin C, zinc, and elderberry for comprehensive protection.',
-        manufacturer: 'Amoun Pharmaceutical',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-45678',
+        id: 'inj-001',
+        slug: 'synvisc-one-injection',
+        name: 'Synvisc-One',
+        category: 'Medical & Healthcare Supplies',
+        categorySlug: 'medical-supplies',
+        activeIngredient: 'Hylan G-F 20 (Cross-linked Hyaluronic Acid)',
+        description: 'Single-injection viscosupplement intended for intra-articular use by healthcare professionals.',
+        fullDescription: `
+      Synvisc-One is a sterile, non-pyrogenic elastoviscous preparation.
+      
+      **Professional Information:**
+      - Hyaluronic acid derivative (Hylan G-F 20)
+      - Intended for intra-articular administration
+      - Single-use prefilled syringe
+      
+      **Regulatory Note:**
+      Medical device supplied for professional use only.
+      `,
+        manufacturer: 'Sanofi',
+        origin: 'USA / EU',
+        edaLicense: 'Medical Device – Available upon request',
         gmpCertified: true,
-        packingStyle: 'Bottle - 90 Vegetarian Capsules',
-        dosageForm: 'Vegetarian Capsules',
-        price: 28.75,
+        packingStyle: 'Prefilled Syringe – Single Dose',
+        dosageForm: 'Intra-articular Injection',
+        strength: '48 mg / 6 mL',
+        currency: 'EUR',
+        availability: 'in_stock',
+        image: '/images/products/synvisc-one.png',
+        certifications: ['CE Mark', 'ISO 13485'],
+        indications: ['Professional use only'],
+        contraindications: ['Refer to IFU'],
+        sideEffects: ['Refer to IFU'],
+        storageConditions: 'Store at 2–8°C',
+        shelfLife: '36 months',
+        productType: 'MedicalDevice',
+        distributionModel: 'Hospital & Authorized Distributor Supply',
+        filesAvailable: ['CE Certificate', 'IFU', 'ISO Certificate']
+    },
+    {
+        id: 'inj-002',
+        slug: 'monovisc-injection',
+        name: 'Monovisc',
+        category: 'Medical & Healthcare Supplies',
+        categorySlug: 'medical-supplies',
+        activeIngredient: 'High Molecular Weight Hyaluronic Acid',
+        description: 'Single-injection hyaluronic acid product for intra-articular administration.',
+        fullDescription: `
+      Monovisc is a non-animal sourced hyaluronic acid preparation.
+      
+      **Key Characteristics:**
+      - Single injection protocol
+      - Sterile and non-pyrogenic
+      - Intended for trained medical professionals
+      `,
+        manufacturer: 'Anika Therapeutics',
+        origin: 'USA',
+        edaLicense: 'Medical Device – Available upon request',
+        gmpCertified: true,
+        packingStyle: 'Prefilled Syringe – Single Use',
+        dosageForm: 'Intra-articular Injection',
+        strength: '88 mg / 4 mL',
         currency: 'EUR',
         availability: 'pre_order',
-        image: '/images/products/immuno-shield-plus.png',
-        certifications: ['EDA', 'GMP'],
-        featured: false,
+        image: '/images/products/monovisc.png',
+        certifications: ['CE Mark', 'ISO 13485'],
+        // indications: ['Professional use only'], // Added based on context, user omitted but standard
+        storageConditions: 'Store below 25°C',
+        shelfLife: '36 months',
+        productType: 'MedicalDevice',
+        distributionModel: 'Orthopedic & Hospital Supply',
+        filesAvailable: ['CE Certificate', 'IFU']
     },
     {
-        id: 'o3p-005',
-        slug: 'omega-3-premium',
-        name: 'Omega-3 Premium Triple Strength',
-        nameAr: 'أوميجا-3 بريميوم',
-        category: 'Cardiology',
-        categorySlug: 'cardiology',
-        activeIngredient: 'Fish Oil 1200mg (EPA 600mg + DHA 400mg)',
-        description: 'High-concentration omega-3 fatty acids for cardiovascular and cognitive health support.',
-        manufacturer: 'Sedico Pharma',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-56789',
+        id: 'inj-003',
+        slug: 'sculptra-injection',
+        name: 'Sculptra',
+        category: 'Medical & Healthcare Supplies',
+        categorySlug: 'medical-supplies',
+        activeIngredient: 'Poly-L-Lactic Acid (PLLA)',
+        description: 'Injectable biostimulatory product intended for professional aesthetic use.',
+        fullDescription: `
+      Sculptra is supplied as a sterile lyophilized powder.
+      
+      **Professional Information:**
+      - Poly-L-lactic acid based
+      - Requires reconstitution prior to use
+      - Intended for trained healthcare professionals only
+      `,
+        manufacturer: 'Galderma',
+        origin: 'EU',
+        edaLicense: 'Medical Device – Available upon request',
         gmpCertified: true,
-        packingStyle: 'Bottle - 120 Softgels',
-        dosageForm: 'Soft Gel Capsules',
-        price: 22.00,
+        packingStyle: 'Vial – Powder for Injection',
+        dosageForm: 'Injectable Suspension (after reconstitution)',
+        strength: '150 mg PLLA per vial',
         currency: 'EUR',
         availability: 'in_stock',
-        image: '/images/products/omega-3-premium.png',
-        certifications: ['EDA', 'GMP'],
-        featured: false,
+        image: '/images/products/sculptra.png',
+        certifications: ['CE Mark', 'ISO 13485'],
+        indications: ['Professional aesthetic use only'],
+        contraindications: ['Refer to IFU'],
+        storageConditions: 'Store at controlled room temperature',
+        shelfLife: '24 months',
+        productType: 'MedicalDevice',
+        distributionModel: 'Authorized Aesthetic Clinics',
+        filesAvailable: ['CE Certificate', 'IFU', 'MSDS']
     },
     {
-        id: 'vd3-006',
-        slug: 'vitamin-d3-forte-5000',
-        name: 'Vitamin D3 Forte 5000 IU',
-        nameAr: 'فيتامين د3 فورت',
-        category: 'Vitamins & Supplements',
-        categorySlug: 'vitamins',
-        activeIngredient: 'Cholecalciferol 5000 IU (125 mcg)',
-        description: 'High-potency vitamin D3 for bone health, immune function, and overall well-being.',
-        manufacturer: 'Memphis Pharma',
-        origin: 'Egypt (EU GMP Certified Facility)',
-        edaLicense: 'EDA-2024-67890',
+        id: 'inj-004',
+        slug: 'duralane-injection',
+        name: 'Duralane',
+        category: 'Medical & Healthcare Supplies',
+        categorySlug: 'medical-supplies',
+        activeIngredient: 'Stabilized Hyaluronic Acid (NASHA Technology)',
+        description: 'Single-injection hyaluronic acid medical device for intra-articular use.',
+        fullDescription: `
+      Duralane utilizes NASHA technology for prolonged residence time.
+      
+      **Product Details:**
+      - Non-animal stabilized hyaluronic acid
+      - Single injection format
+      - Supplied sterile and ready to use
+      `,
+        manufacturer: 'Bioventus',
+        origin: 'Sweden / EU',
+        edaLicense: 'Medical Device – Available upon request',
         gmpCertified: true,
-        packingStyle: 'Bottle - 90 Chewable Tablets',
-        dosageForm: 'Chewable Tablets',
-        price: 15.50,
+        packingStyle: 'Prefilled Syringe – Single Use',
+        dosageForm: 'Intra-articular Injection',
+        strength: '60 mg / 3 mL',
         currency: 'EUR',
         availability: 'in_stock',
-        image: '/images/products/vitamin-d3-forte.png',
-        certifications: ['EDA', 'GMP', 'ISO-9001'],
-        featured: false,
-    },
+        image: '/images/products/duralane.png',
+        certifications: ['CE Mark', 'ISO 13485'],
+        indications: ['Professional use only'],
+        storageConditions: 'Store below 25°C',
+        shelfLife: '36 months',
+        productType: 'MedicalDevice',
+        distributionModel: 'Hospital & Orthopedic Distribution',
+        filesAvailable: ['CE Certificate', 'IFU']
+    }
 ]
 
 export function getProductBySlug(slug: string): ProductData | undefined {
@@ -251,14 +264,6 @@ export function getFeaturedProducts(): ProductData[] {
 export function getRelatedProducts(productSlug: string, limit = 4): ProductData[] {
     const product = getProductBySlug(productSlug)
     if (!product) return []
-
-    // First try to get specified related products
-    if (product.relatedProducts?.length) {
-        const related = product.relatedProducts
-            .map(slug => getProductBySlug(slug))
-            .filter(Boolean) as ProductData[]
-        if (related.length >= limit) return related.slice(0, limit)
-    }
 
     // Fall back to same category products
     return products

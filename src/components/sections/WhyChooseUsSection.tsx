@@ -1,48 +1,49 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ShieldCheck, Truck, HeadphonesIcon, Award, Globe, Clock } from 'lucide-react'
+import { ShieldCheck, Truck, HeadphonesIcon, Award, Globe, Factory } from 'lucide-react'
 
+// Updated features based on user request
 const features = [
     {
         icon: ShieldCheck,
-        title: 'Quality Assurance',
-        description: 'All products are EDA and GMP certified, ensuring the highest standards of safety and efficacy.',
+        title: 'Quality & Compliance',
+        description: 'Products manufactured by GMP-compliant partners and distributed in accordance with applicable regulatory frameworks.',
         color: 'from-emerald-500 to-emerald-600',
         shadowColor: 'shadow-emerald-500/25',
     },
     {
         icon: Truck,
-        title: 'Fast & Reliable Delivery',
-        description: 'Efficient logistics network ensuring timely delivery to pharmacies and distributors worldwide.',
+        title: 'Efficient Logistics',
+        description: 'Reliable international logistics supporting authorized distributors and professional partners worldwide.',
         color: 'from-blue-500 to-blue-600',
         shadowColor: 'shadow-blue-500/25',
     },
     {
         icon: HeadphonesIcon,
-        title: 'Expert Support',
-        description: 'Dedicated pharmaceutical specialists available to answer your questions and provide guidance.',
+        title: 'Professional Support',
+        description: 'Dedicated team providing regulatory and product information support to partners.',
         color: 'from-purple-500 to-purple-600',
         shadowColor: 'shadow-purple-500/25',
     },
     {
-        icon: Award,
-        title: 'Premium Products',
-        description: 'Carefully selected pharmaceuticals from leading European manufacturers with proven track records.',
+        icon: Factory,
+        title: 'Curated Portfolio',
+        description: 'Pharmaceutical and nutraceutical products sourced from selected European and international manufacturing partners.',
         color: 'from-amber-500 to-amber-600',
         shadowColor: 'shadow-amber-500/25',
     },
     {
         icon: Globe,
-        title: 'Global Reach',
-        description: 'Serving partners across MENA region with established import/export channels and documentation.',
+        title: 'Regional Expertise',
+        description: 'Serving professional partners across the MENA region through established import/export channels.',
         color: 'from-cyan-500 to-cyan-600',
         shadowColor: 'shadow-cyan-500/25',
     },
     {
-        icon: Clock,
-        title: '15+ Years Experience',
-        description: 'Decades of expertise in pharmaceutical distribution and regulatory compliance.',
+        icon: Award,
+        title: 'Industry Experience',
+        description: '15+ years of experience in pharmaceutical trade and regulatory coordination.',
         color: 'from-rose-500 to-rose-600',
         shadowColor: 'shadow-rose-500/25',
     },
@@ -71,7 +72,7 @@ export default function WhyChooseUsSection() {
                     >
                         Your Partner in{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">
-                            Pharmaceutical Excellence
+                            Pharmaceutical Trade Excellence
                         </span>
                     </motion.h2>
                     <motion.p
@@ -79,10 +80,9 @@ export default function WhyChooseUsSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg text-gray-600"
+                        className="text-lg text-gray-600 leading-relaxed"
                     >
-                        We combine German precision with global reach to deliver quality pharmaceuticals
-                        that healthcare providers and patients can trust.
+                        We combine German-based operational standards with global market reach to deliver pharmaceutical and nutraceutical products to regulated professional markets.
                     </motion.p>
                 </div>
 
@@ -106,7 +106,7 @@ export default function WhyChooseUsSection() {
                             <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                                 {feature.title}
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-gray-600 leading-relaxed text-sm">
                                 {feature.description}
                             </p>
 
