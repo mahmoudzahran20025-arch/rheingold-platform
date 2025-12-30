@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Search, Grid, List } from 'lucide-react'
+import { Search, Grid, List, ShieldCheck, Truck, Headphones, Award, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -50,7 +50,7 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
             <div className="container mx-auto px-4 py-12">
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Sidebar Filters */}
-                    <aside className="lg:w-72">
+                    <aside className="lg:w-72 space-y-8">
                         <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-32">
                             <h3 className="font-bold text-gray-900 mb-4">Supply Categories</h3>
                             <div className="space-y-2">
@@ -99,10 +99,75 @@ export default function ProductsClient({ initialProducts }: ProductsClientProps)
                                 </div>
                             </div>
                         </div>
+
+                        {/* TRUST SIGNALS WIDGET */}
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white shadow-lg">
+                            <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
+                                <Award className="w-5 h-5 text-amber-400" />
+                                Why Rheingold?
+                            </h3>
+                            <div className="space-y-6">
+                                <div className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                        <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-sm">EU GMP Certified</h4>
+                                        <p className="text-xs text-slate-300 mt-1">Products sourced from fully compliant European facilities.</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                        <Truck className="w-5 h-5 text-blue-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-sm">Express Logistics</h4>
+                                        <p className="text-xs text-slate-300 mt-1">24-48h delivery window across DACH region.</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                        <Headphones className="w-5 h-5 text-purple-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-sm">Dedicated Agent</h4>
+                                        <p className="text-xs text-slate-300 mt-1">Personal account manager for every B2B partner.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </aside>
 
                     {/* Main Content */}
                     <main className="flex-1">
+                        {/* TRUST & STATS BANNER */}
+                        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 mb-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="flex -space-x-4">
+                                    {[1, 2, 3, 4].map((i) => (
+                                        <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center overflow-hidden">
+                                            <span className="text-[10px] font-bold text-slate-400">P{i}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div>
+                                    <p className="font-bold text-slate-900">Trusted by 500+ Partners</p>
+                                    <p className="text-xs text-slate-500">Pharmacies, Hospitals & Distributors</p>
+                                </div>
+                            </div>
+                            <div className="h-8 w-px bg-slate-200 hidden md:block"></div>
+                            <div className="flex gap-8 text-center md:text-left">
+                                <div>
+                                    <p className="font-bold text-2xl text-blue-600">50+</p>
+                                    <p className="text-xs text-slate-500 font-medium uppercase">Active Products</p>
+                                </div>
+                                <div>
+                                    <p className="font-bold text-2xl text-emerald-600">12</p>
+                                    <p className="text-xs text-slate-500 font-medium uppercase">EU Countries</p>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Search & View Controls */}
                         <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
                             <div className="relative w-full md:w-96">
