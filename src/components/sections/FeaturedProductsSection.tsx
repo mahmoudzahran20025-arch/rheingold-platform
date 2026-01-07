@@ -1,3 +1,7 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { ArrowRight, Lock, Eye, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
