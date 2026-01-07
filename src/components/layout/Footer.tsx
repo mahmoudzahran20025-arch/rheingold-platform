@@ -35,8 +35,8 @@ const socialLinks = [
 
 const verifyLinks = [
     { name: 'NorthData', href: 'https://www.northdata.com/Rheingold+Royal+Medica+GmbH' },
-    { name: 'D&B', href: 'https://www.dnb.com/business-directory/company-profiles.rheingold_royal_medica_gmbh' },
-    { name: 'Implisense', href: 'https://implisense.com/de/companies/rheingold-royal-medica-gmbh' },
+    { name: 'D&B', href: 'https://www.dnb.com/business-directory/company-profiles.rheingold_royal_medica_gmbh.e9ab0c24c7f660293208acf3e55caf0e.html' },
+    { name: 'Implisense', href: 'https://implisense.com/de/companies/rheingold-royal-medica-gmbh-bad-homburg-v-d-hoehe-DE8XG3CQHF14' },
 ]
 
 const certifications = [
@@ -75,7 +75,7 @@ export default function Footer() {
                             </a>
                             <div className="flex items-center gap-3 text-gray-400">
                                 <MapPin className="w-5 h-5 text-blue-400" />
-                                <span>Höhe Str. 31-33, 61348 Bad Homburg, Germany</span>
+                                <span>Höhe Str. 31-33, 61348 Bad Homburg v. d. Höhe, Germany</span>
                             </div>
                         </div>
                     </div>

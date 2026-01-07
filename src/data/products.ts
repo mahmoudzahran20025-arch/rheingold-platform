@@ -70,11 +70,11 @@ export const products: ProductData[] = [
 **Regulatory Status:**
 - Sourced from EU GMP Certified partner.
 - Distributed in compliance with local regulations.`,
-        manufacturer: 'kwalitypharma',
+        manufacturer: 'kwality pharmacuticals',
         origin: 'Germany (EU GMP Certified Facility)',
         edaLicense: 'Regulated Product',
         gmpCertified: true,
-        packingStyle: 'Blister Pack - 30 Film-Coated Tablets',
+        packingStyle: '1x7x5 g | sachet',
         dosageForm: 'Film-Coated Tablets',
         strength: '5mg Tadalafil per tablet',
         price: 0,
@@ -141,7 +141,8 @@ export const products: ProductData[] = [
         shelfLife: '36 months',
         productType: 'MedicalDevice',
         distributionModel: 'Hospital & Authorized Distributor Supply',
-        filesAvailable: ['CE Certificate', 'IFU', 'ISO Certificate']
+        filesAvailable: ['CE Certificate', 'IFU', 'ISO Certificate'],
+        featured: true
     },
     {
         id: 'inj-002',
@@ -175,7 +176,8 @@ export const products: ProductData[] = [
         shelfLife: '36 months',
         productType: 'MedicalDevice',
         distributionModel: 'Orthopedic & Hospital Supply',
-        filesAvailable: ['CE Certificate', 'IFU']
+        filesAvailable: ['CE Certificate', 'IFU'],
+        featured: true
     },
     {
         id: 'inj-003',
@@ -210,7 +212,8 @@ export const products: ProductData[] = [
         shelfLife: '24 months',
         productType: 'MedicalDevice',
         distributionModel: 'Authorized Aesthetic Clinics',
-        filesAvailable: ['CE Certificate', 'IFU', 'MSDS']
+        filesAvailable: ['CE Certificate', 'IFU', 'MSDS'],
+        featured: true
     },
     {
         id: 'inj-004',

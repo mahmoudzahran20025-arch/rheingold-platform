@@ -1,114 +1,74 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowRight, Pill, Heart, Brain, Shield, Lock } from 'lucide-react'
+import { ArrowRight, Lock, Eye, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-
-// B2B Featured Portfolio
-const featuredProducts = [
-    {
-        id: '1',
-        slug: 'king-lovee-vital',
-        name: 'King Lovee Vital',
-        activeIngredient: 'Tadalafil 5mg + Multivitamins',
-        category: 'Prescription Pharmaceuticals',
-        icon: Brain,
-        color: 'from-purple-500 to-purple-600',
-        bgColor: 'bg-purple-50',
-        isRx: true
-    },
-    {
-        id: '2',
-        slug: 'cardio-plus-forte',
-        name: 'Cardio Plus Forte',
-        activeIngredient: 'Aspirin 100mg + Omega-3',
-        category: 'Prescription Pharmaceuticals',
-        icon: Heart,
-        color: 'from-rose-500 to-rose-600',
-        bgColor: 'bg-rose-50',
-        isRx: true
-    },
-    {
-        id: '3',
-        slug: 'neuro-balance-pro',
-        name: 'Neuro Balance Pro',
-        activeIngredient: 'Vitamin B Complex + Magnesium',
-        category: 'Food Supplements',
-        icon: Pill,
-        color: 'from-blue-500 to-blue-600',
-        bgColor: 'bg-blue-50',
-        isRx: false
-    },
-    {
-        id: '4',
-        slug: 'immuno-shield-plus',
-        name: 'Immuno Shield Plus',
-        activeIngredient: 'Vitamin C + Zinc + Elderberry',
-        category: 'Food Supplements',
-        icon: Shield,
-        color: 'from-emerald-500 to-emerald-600',
-        bgColor: 'bg-emerald-50',
-        isRx: false
-    },
-]
+import { getFeaturedProducts } from '@/data/products'
+import Image from 'next/image'
 
 export default function FeaturedProductsSection() {
+    const featuredProducts = getFeaturedProducts()
+
     return (
-        <section className="py-24 bg-white">
-            <div className="container mx-auto px-4">
+        <section className="py-24 bg-slate-50 relative overflow-hidden">
+            {/* Background Decoration */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+                <div className="absolute top-10 left-10 w-64 h-64 bg-blue-600 rounded-full blur-3xl" />
+                <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-600 rounded-full blur-3xl" />
+            </div>
+
+            <div className="container mx-auto px-4 relative z-10">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-                    <div>
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                    <div className="max-w-2xl">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-4"
+                            className="flex items-center gap-2 text-blue-600 font-bold tracking-widest uppercase text-xs mb-4"
                         >
-                            Distribution Portfolio
-                        </motion.span>
+                            <span className="w-8 h-[2px] bg-blue-600" />
+                            Premium Portfolio
+                        </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl font-bold text-gray-900"
+                            className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight"
                         >
-                            Pharmaceutical{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">
-                                Trade & Supply
+                            Advanced Pharmaceutical{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
+                                Trade Solutions
                             </span>
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.15 }}
-                            className="mt-4 text-lg text-gray-600 max-w-2xl"
+                            transition={{ delay: 0.2 }}
+                            className="mt-6 text-lg text-slate-600 leading-relaxed"
                         >
-                            Authorized distribution of EDA registered pharmaceuticals and premium food supplements. Sourced directly from GMP certified manufacturers.
+                            Explore our curated selection of high-demand medical devices and pharmaceuticals.
+                            All products are sourced from GMP-certified facilities with full regulatory documentation.
                         </motion.p>
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ delay: 0.3 }}
                     >
                         <Link href="/products">
-                            <Button size="lg">
-                                View Full Portfolio
-                                <ArrowRight className="w-4 h-4 ml-2" />
+                            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all group">
+                                Explore Portfolio
+                                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </Link>
                     </motion.div>
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {featuredProducts.map((product, index) => (
                         <motion.div
                             key={product.id}
@@ -117,49 +77,75 @@ export default function FeaturedProductsSection() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <Link href={`/products/${product.slug}`}>
-                                <div className="group relative bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                                    {/* Image Area with Icon */}
-                                    <div className={`relative h-52 ${product.bgColor} flex items-center justify-center`}>
-                                        <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
-                                            <product.icon className="w-10 h-10 text-white" />
-                                        </div>
-                                        {/* Status Badge */}
-                                        <div className="absolute top-4 left-4">
-                                            {product.isRx ? (
-                                                <Badge className="bg-slate-900 text-white border-none shadow-sm text-[10px] px-2">
-                                                    <Lock className="w-3 h-3 mr-1" /> Professional Use
-                                                </Badge>
-                                            ) : (
-                                                <Badge className="bg-emerald-600 text-white border-none shadow-sm text-[10px]">
-                                                    Available for Supply
-                                                </Badge>
-                                            )}
-                                        </div>
+                            <div className="group h-full flex flex-col bg-white/70 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
+                                {/* Image Container */}
+                                <div className="relative h-64 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+                                    <div className="absolute inset-0 flex items-center justify-center p-8">
+                                        {product.image ? (
+                                            <Image
+                                                src={product.image}
+                                                alt={product.name}
+                                                fill
+                                                className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out"
+                                            />
+                                        ) : (
+                                            <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-300 text-3xl">
+                                                {product.name[0]}
+                                            </div>
+                                        )}
                                     </div>
 
-                                    {/* Content */}
-                                    <div className="p-6">
-                                        <p className="text-xs text-blue-600 font-semibold mb-2 uppercase tracking-wide">{product.category}</p>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                                            {product.name}
-                                        </h3>
-                                        <p className="text-sm text-gray-500 mb-4 line-clamp-1">{product.activeIngredient}</p>
-
-                                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                            <div>
-                                                <p className="text-xs text-gray-400 mb-1">Status</p>
-                                                <span className="text-sm font-medium text-gray-900">
-                                                    {product.isRx ? 'Partner Access Only' : 'Wholesale Available'}
-                                                </span>
-                                            </div>
-                                            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                                <ArrowRight className="w-4 h-4" />
-                                            </div>
-                                        </div>
+                                    {/* Type Badge */}
+                                    <div className="absolute top-6 left-6">
+                                        {product.productType === 'Rx' ? (
+                                            <Badge className="bg-slate-900/90 backdrop-blur-sm text-white border-none py-1.5 px-3 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                                <Lock className="w-3 h-3 mr-1.5" /> Professional Use
+                                            </Badge>
+                                        ) : (
+                                            <Badge className="bg-emerald-500/90 backdrop-blur-sm text-white border-none py-1.5 px-3 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                                <CheckCircle2 className="w-3 h-3 mr-1.5" /> Certified Supply
+                                            </Badge>
+                                        )}
                                     </div>
                                 </div>
-                            </Link>
+
+                                {/* Content */}
+                                <div className="p-8 flex flex-col flex-1">
+                                    <div className="mb-4">
+                                        <div className="text-[10px] font-bold text-blue-600 uppercase tracking-[0.2em] mb-2">
+                                            {product.category}
+                                        </div>
+                                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                                            {product.name}
+                                        </h3>
+                                        <p className="mt-2 text-sm text-slate-500 font-medium line-clamp-1">
+                                            {product.activeIngredient}
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-auto space-y-6">
+                                        {/* Meta Stats */}
+                                        <div className="flex items-center gap-4 text-xs font-medium text-slate-400 border-t border-slate-100 pt-6">
+                                            <div className="flex flex-col">
+                                                <span className="text-[10px] uppercase text-slate-300 mb-0.5">Origin</span>
+                                                <span className="text-slate-700">{product.origin.split(' ')[0]}</span>
+                                            </div>
+                                            <div className="w-px h-6 bg-slate-100" />
+                                            <div className="flex flex-col">
+                                                <span className="text-[10px] uppercase text-slate-300 mb-0.5">Packing</span>
+                                                <span className="text-slate-700 truncate max-w-[80px]">{product.packingStyle}</span>
+                                            </div>
+                                        </div>
+
+                                        <Link href={`/products/${product.slug}`}>
+                                            <Button variant="outline" className="w-full h-12 rounded-xl border-slate-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all font-bold group/btn">
+                                                View Datasheet
+                                                <Eye className="w-4 h-4 ml-2 opacity-0 group-hover/btn:opacity-100 transition-all" />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
